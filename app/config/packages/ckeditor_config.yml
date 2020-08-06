@@ -1,0 +1,7 @@
+fos_ck_editor:
+    configs:
+        my_config:
+            #toolbar: [ ["@tools"] ]
+            uiColor:                "#14a4ba"
+            #filebrowserUploadRoute: "my_route"
+            #extraPlugins:           "wordcount"

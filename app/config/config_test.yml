@@ -1,0 +1,35 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+doctrine:
+    dbal:
+        url: 'sqlite:///%kernel.project_dir%/var/test.db3'
+            
+parameters:
+    database_driver: 'pdo_sqlite'
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: design_durot_test
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: ssl0.ovh.net
+    mailer_user: admin@template.com
+    mailer_password: null
+    mailer_encryption: ssl
+    mailer_port: 443
+    secret: ThisTokenIsNotSoSecretChangeIt

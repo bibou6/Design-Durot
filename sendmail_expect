@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+spawn php bin/console swiftmailer:email:send
+sleep 2
+expect ">"
+send "no-reply@grecoinmobiliaria.com\r"
+sleep 2
+expect ">"
+send "adriendurot3@hotmail.com\r"
+sleep 2
+expect ">"
+send "test\r"
+sleep 2
+expect ">"
+send "toto\r"
+interact

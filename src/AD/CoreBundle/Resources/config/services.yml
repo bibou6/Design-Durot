@@ -1,0 +1,25 @@
+services:
+            
+###############################################
+#               TWIG EXTENSION                #
+###############################################
+
+  emailTwigExtension:
+    class: AD\CoreBundle\Extension\EmailTwigExtension
+    arguments: ["@security.token_storage"]
+    tags:
+      - { name: twig.extension }
+
+
+###############################################
+#               FIXTURE SERVICE               #
+###############################################
+
+# services.yml
+## to adapt for tests
+  loadBasicData:
+    class: AD\CoreBundle\DataFixtures\ORM\LoadBasicData
+    arguments: ["@request_stack"]
+    tags: ['doctrine.fixture.orm']
+            
+            

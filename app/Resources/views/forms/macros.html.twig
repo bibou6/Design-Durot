@@ -1,0 +1,76 @@
+{% macro prototype_wrapping(prototype) %}
+<div class='col-xl-4 col-md-6 col-sm-12'>
+	<div class='card card-body bg-info'>
+		<div class='card-title'>
+			<a onClick='removeCollectionItem(this);'
+				class='btn btn-danger float-right'>&times</a>
+		</div>
+		<div class='card-text'>
+			<div class='data-subchild'>
+				{{ form_widget(prototype)|e('html_attr') }}
+			</div>
+		</div>
+	</div>
+</div>
+{% endmacro %}
+
+
+
+
+{% macro entity_wrapping(entity_form) %}
+<div class="col-xl-4 col-md-6 col-sm-12">
+	<div class="card card-body bg-info">
+		<h4 class="card-title">
+			{{ entity_form.vars.label | trans }}
+		</h4>
+		<div class="card-text">
+			{% for form_child in entity_form.children %}
+			{% if form_child.vars.block_prefixes[1] != "collection" %}
+			    {{ form_row(form_child) }}
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endmacro %}
+
+
+
+{% macro collection_wrapping(entity_form) %}
+{% import _self as macro %}
+
+<div class="row-fluid">
+	<div class="col-xl-12">
+		<h5 class="sub-title">
+			{{ entity_form.vars.label | trans }}
+		</h5>
+		<div class="data-collection" {% if entity_form.vars.allow_add %}
+			data-prototype="{{ macro.prototype_wrapping(entity_form.vars.prototype) }}"
+			{% endif %}>
+			<div class="row">
+				{% for form_child in entity_form  %}
+				<div class="col-xl-4 col-md-6 col-sm-12">
+					<div class="card card-body bg-info">
+						<div class="card-title">
+							<a onClick="removeCollectionItem(this);"
+								class="btn btn-danger float-right">&times</a>
+						</div>
+						<div class="card-text">
+							<div class="data-subchild">
+								{{ form_rest(form_child) }}
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			{% if entity_form.vars.allow_add %}
+			<a class="btn btn-success" onClick="addCollectionItem(this);"> {{ 'common.actions.add' | trans }}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endmacro %}

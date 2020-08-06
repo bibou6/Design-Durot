@@ -1,0 +1,51 @@
+easy_admin:
+    site_name: 'Design Durot'
+    design:
+        brand_color: '#1ABC9C'
+        color_scheme: 'dark'
+        assets:
+            favicon: '/assets/backend/favicon.png'
+            css:
+                #look here to find the ids for the css: https://symfony.com/doc/current/bundles/EasyAdminBundle/book/design-configuration.html
+                # HTTP protocol-relative URL
+                #- '//example.org/css/admin1.css'
+            js:
+                #Same as css
+    entities:
+        User:
+            class: AD\UserBundle\Entity\User
+            translation_domain: 'admin'
+            label: user.label
+            form:
+                fields:
+                    - { property: 'imageFile', type: 'vich_image', label: 'property.imageFile' }
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'name', label: 'property.name' }
+                    - { property: 'email', label: 'property.email' }
+                    - { property: 'password', label: 'property.password' }
+                    - { property: 'roles', label: 'property.role' }
+            list:
+                title: user.list.label
+                max_results: '10'
+                actions: 
+                    - { name: 'show', icon: 'search', label: false }
+                    - { name: 'edit', icon: 'pencil', label: false }  
+                    - { name: 'delete', icon: 'trash', label: false }
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%', label: 'property.image' }
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'name', label: 'property.name' }
+                    - { property: 'email', label: 'property.email' }
+                    - { property: 'roles', label: 'property.role' }
+                    - { property: 'enabled', label: 'property.enabled' }
+            show:
+                fields:
+                    - { property: 'image', type: 'image', base_path: '%app.path.user_images%' }
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'name', label: 'property.name' }
+                    - { property: 'email', label: 'property.email' }
+                    - { property: 'roles', label: 'property.role' }
+            search: #https://symfony.com/doc/current/bundles/EasyAdminBundle/book/list-search-show-configuration.html
+                fields:
+                    - { property: 'username', label: 'property.username' }
+                    - { property: 'email', label: 'property.email' }

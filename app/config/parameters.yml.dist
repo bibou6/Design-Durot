@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: greco_administraciones
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: ssl0.ovh.net
+    mailer_user: admin@template.com
+    mailer_password: null
+    mailer_encryption: ssl
+    mailer_port: 443
+    secret: ThisTokenIsNotSoSecretChangeIt
